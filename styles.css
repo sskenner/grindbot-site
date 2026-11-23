@@ -1,0 +1,166 @@
+/* Grindbot brand: near-black, neon cyan + magenta (from grindbot_brand.jpg) */
+:root {
+  color-scheme: dark;
+  --paper: #05070b;
+  --panel: #0e131a;
+  --band: #090d13;
+  --ink: #eef8fb;
+  --muted: #9cbacc;          /* the "AUTOMATION" steel grey */
+  --line: #1c2530;
+  --cyan: #02fefe;
+  --magenta: #d811f2;
+  --accent: var(--cyan);
+  --accent-ink: #02161a;
+  --accent-hover: #7ffefe;
+  --glow: 0 0 18px rgba(2, 254, 254, .35);
+  --radius: 10px;
+  --wrap: 960px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(216, 17, 242, .10), transparent 60%),
+    radial-gradient(900px 600px at 0% 0%, rgba(2, 254, 254, .08), transparent 60%),
+    var(--paper);
+  background-attachment: fixed;
+  color: var(--ink);
+  font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding-bottom: 84px; /* room for the sticky button on phones */
+}
+a { color: inherit; }
+h1, h2, h3 { line-height: 1.15; margin: 0 0 .5em; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2rem, 7vw, 3.4rem); font-weight: 800; }
+h2 { font-size: clamp(1.35rem, 4vw, 1.8rem); font-weight: 750; }
+h3 { font-size: 1.05rem; font-weight: 700; }
+p { margin: 0 0 1em; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 16px; }
+section { padding: 40px 0; }
+section.band { background: var(--band); border-block: 1px solid var(--line); }
+
+/* the brand art is black-backed: screen blending drops the black into the page */
+.art { mix-blend-mode: screen; display: block; }
+
+/* header */
+.top {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  max-width: var(--wrap); margin: 0 auto; padding: 12px 16px;
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand .mark { height: 40px; width: auto; }
+.brand .wordmark { height: 21px; width: auto; }
+.top-cta { font-weight: 650; color: var(--cyan); text-decoration: none; font-size: .95rem; white-space: nowrap; }
+.top-cta:hover { text-decoration: underline; }
+
+/* thin cyan -> magenta rule under the header */
+.rule { height: 2px; background: linear-gradient(90deg, var(--cyan), var(--magenta)); opacity: .8; }
+
+/* hero */
+.hero { padding-top: 24px; }
+.hero-art { width: min(340px, 78%); height: auto; margin: 0 auto 8px; }
+/* tagline: "You do the job." white, "We do the grind." cyan */
+.tagline { text-align: center; font-size: clamp(1.15rem, 3.6vw, 1.5rem); font-weight: 650; margin: 0 0 28px; }
+.tagline span, .foot-tag span { color: var(--cyan); font-weight: 800; text-shadow: 0 0 14px rgba(2, 254, 254, .45); }
+.foot-tag { color: var(--ink); font-weight: 650; }
+.eyebrow { color: var(--cyan); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; margin-bottom: .75em; }
+.sub { font-size: 1.15rem; color: var(--muted); max-width: 40em; }
+.hero-cta { margin-top: 24px; }
+.note { color: var(--muted); font-size: .9rem; margin-top: 10px; }
+
+/* video */
+.frame {
+  position: relative; aspect-ratio: 16 / 9; width: 100%; margin-top: 24px;
+  border-radius: var(--radius); overflow: hidden; background: #000;
+  border: 1px solid rgba(2, 254, 254, .35);
+  box-shadow: 0 0 0 1px rgba(216, 17, 242, .15), 0 0 40px rgba(2, 254, 254, .12);
+}
+.frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.frame-empty {
+  display: grid; place-content: center; text-align: center; gap: 6px; padding: 16px;
+  background: repeating-linear-gradient(45deg, var(--panel), var(--panel) 12px, var(--band) 12px, var(--band) 24px);
+  color: var(--muted);
+}
+.frame-empty span { font-weight: 700; color: var(--ink); }
+
+/* buttons */
+.btn {
+  display: inline-block; background: var(--accent); color: var(--accent-ink);
+  font-weight: 750; text-decoration: none; padding: 15px 24px; border-radius: var(--radius);
+  font-size: 1.05rem; min-height: 48px; box-shadow: var(--glow);
+}
+.btn:hover { background: var(--accent-hover); }
+.btn:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid var(--magenta); outline-offset: 3px; }
+.btn-block { display: block; text-align: center; }
+/* second option: outlined, so "book a call" stays the main action */
+.btn-alt { background: transparent; color: var(--cyan); box-shadow: inset 0 0 0 2px var(--cyan); }
+.btn-alt:hover { background: rgba(2, 254, 254, .1); }
+.cta-pair { display: flex; flex-wrap: wrap; gap: 10px; }
+.price .cta-pair { justify-content: center; }
+.sticky .cta-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sticky .btn { padding: 13px 10px; font-size: .95rem; }
+
+/* lists */
+.points, .cards, .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.points li, .cards li {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px;
+}
+.points li { border-top: 2px solid var(--cyan); }
+.points li:nth-child(2) { border-top-color: #6c88f8; }
+.points li:nth-child(3) { border-top-color: var(--magenta); }
+.points p, .cards p, .steps p { color: var(--muted); margin: 0; }
+.cards h2 a, .cards h3 a { text-decoration-color: var(--cyan); text-underline-offset: 3px; }
+.cards-lg .frame { margin-top: 14px; }
+
+.steps { counter-reset: s; }
+.steps li { counter-increment: s; position: relative; padding-left: 48px; min-height: 36px; }
+.steps li::before {
+  content: counter(s); position: absolute; left: 0; top: 0;
+  width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+  background: transparent; color: var(--cyan); font-weight: 800;
+  box-shadow: inset 0 0 0 2px var(--cyan), 0 0 12px rgba(2, 254, 254, .3);
+}
+
+/* faq */
+.faq { margin-top: 22px; display: grid; gap: 8px; }
+details { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; background: var(--panel); }
+summary { cursor: pointer; font-weight: 650; }
+details p { margin: 10px 0 0; color: var(--muted); }
+
+/* price */
+.price { text-align: center; }
+.price-big {
+  font-size: clamp(1.8rem, 6vw, 2.6rem); font-weight: 800; margin-bottom: .25em;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.price p:not(.price-big) { color: var(--muted); }
+
+/* footer */
+.foot { max-width: var(--wrap); margin: 0 auto; padding: 32px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: .95rem; }
+.foot p { margin: 0 0 .4em; }
+.foot a { color: var(--ink); }
+.foot-brand strong { color: var(--cyan); }
+.fine { font-size: .85rem; }
+
+/* sticky phone CTA */
+.sticky {
+  position: fixed; left: 0; right: 0; bottom: 0; padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: rgba(5, 7, 11, .9); border-top: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+
+@media (max-width: 380px) {
+  .brand .wordmark { display: none; }
+}
+
+@media (min-width: 720px) {
+  body { padding-bottom: 0; }
+  .sticky { display: none; }
+  section { padding: 56px 0; }
+  .points, .cards { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .steps { grid-template-columns: repeat(4, 1fr); }
+  .steps li { padding-left: 0; padding-top: 48px; }
+}
