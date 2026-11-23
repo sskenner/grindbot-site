@@ -44,7 +44,13 @@ section.band { background: var(--band); border-block: 1px solid var(--line); }
 /* the brand art is black-backed: screen blending drops the black into the page */
 .art { mix-blend-mode: screen; display: block; }
 
-/* header */
+/* header: stays at the top while the page scrolls */
+html { scroll-padding-top: 72px; }
+.site-head {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(5, 7, 11, .88);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
 .top {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
   max-width: var(--wrap); margin: 0 auto; padding: 12px 16px;
